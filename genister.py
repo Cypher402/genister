@@ -1,13 +1,6 @@
 import random, os
 from os import system, name
 
-# Create list "lines"
-# First using "open()" to open the text doc so that we can read from or write to it.
-# Using "read()" to be able to read the doc contents.
-# Splitline() method is used to split the lines at line boundaries.
-# The use of split is very common in most languages and is used by strings to break them up into an array.
-lines = open('genister_store.txt').read().splitlines()
-
 def quit_program():
     clear_terminal()
     print("\n\t**Philasky Bot bids you farewell and a good day!**\n")
@@ -48,13 +41,15 @@ def copy_clipboard(text):
     command = 'echo ' + text.strip() + '| clip'
     os.system(command)
 
-def random_line(lines):
-    # When the function is called, return a random word(line) from "lines" list that is opening the txt doc.
-    return random.choice(lines)
-
 def generate_pass():
     clear_terminal()
-    word1, word2, word3 = random_line(lines), random_line(lines), random_line(lines)
+    # Create list "lines"
+    # First using "open()" to open the text doc so that we can read from or write to it.
+    # Using "read()" to be able to read the doc contents.
+    # Splitline() method is used to split the lines at line boundaries.
+    # The use of split is very common in most languages and is used by strings to break them up into an array.
+    lines = open('genister_store.txt').read().splitlines()
+    word1, word2, word3 = random.choice(lines), random.choice(lines), random.choice(lines)
     copy_clipboard(f"{word1} {word2} {word3}")
 
     # Return the length (the number of items) of an object. 
